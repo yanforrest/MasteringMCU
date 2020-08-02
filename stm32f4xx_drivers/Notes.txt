@@ -1,0 +1,34 @@
+MCU : STM32F407x
+"DM00031020-STM32F4_ReferenceManual.pdf"
+
+1. What's the base address of AHB1 BUS peripheral registers?
+  AHB1_PERI_START_ADDRESS : 0x4002 0000
+  AHB1_PERI_END_ADDRESS   : 0x4007 FFFF
+2. What's the base address of GPIOA peripheral registers£¿
+	0x4002 0000
+3. What's the base address of RCC engine registers in MCU?
+	0x4002 3800
+4. What's the base address of APB1 peripheral registers?
+	0x4000 0000
+5. What's the base address of FLASH memory?
+	0x0800_0000
+6. What's the base address of SRAM2?
+     BASE_ADDRESS_OF_SRAM1 = 0x2000 0000
+     SIZE_OF_SRAM1 = X
+     BASE_ADDRESS_OF_SRAM2 = BASE_ADDRESS_OF_SRAM1 + X
+7. What's the base address of ADC registers?
+	0x4001 2000
+
+Notes  about MCU bus interface
+==========================================================
+if the instructions are present in between the memory locations os 0x00000000 t0 0x1FFFFFFC then
+the Cortex Processor will fetch the instruction using ICODE interface
+
+if the instructions are present outside of 0x00000000 t0 0x1FFFFFFC  then precessor fetches the instructions
+over the system bus.
+
+if the data is present in between  0x00000000 t0 0x1FFFFFFF  then precessor fetches the data 
+over D-CODE bus interface
+
+if the data is present outside of 0x00000000 t0 0x1FFFFFFF memory locations then, the data will be 
+fetched over the system bus .
